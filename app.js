@@ -12,6 +12,8 @@ connexion.connect((err) => {
   }
 });
 
+app.use(express.json());
+
 app.get('/movies/:id', (req, res) => {
   const movieId = req.params.id;
   
@@ -34,5 +36,19 @@ app.get('/movies', (req, res) => {
       res.send('Error retrieving data from database');
     })
 });
+
+app.post('/movies', (req, res) => {
+  console.log('Post');
+  const { title, synopsis, genre, year, duration } = req.body;
+  connexion.promise().query(
+    'INSERT INTO movies(title, synopsis, genre, year, duration) VALUES (?, ?, ?, ?, ?)',
+    [title, synopsis, genre, year, duration])
+    .then((result) =>  {
+      res.send({succes: 'Movie successfully save', data: result});
+    })
+    .catch((err) => {
+      res.send('Error saving the movie');
+    })
+})
 
 app.listen(port, () => console.log('server listening on port 5000'));
