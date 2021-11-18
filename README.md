@@ -12,4 +12,6 @@ The goal of the API is to fetch data from a database on table movies and author 
 - 3/ Add data in the movies tables with the provides files (./sql/step3.sql)
 - 4/ Add a get route for all the movies
 - 5/ Add a get route for one movies
-- 6/ Add a post route to add a movies and get the ID on the send data if successful ({success: 'msg', data: ...Id})
+- 6/ Add a post route to add a movies (body params) and get the ID on the send data if successful ({success: 'msg', data: ...Id})
+- 7/ Add an update route with body params
+- 8/ Add a delete route for the movie
