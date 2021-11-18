@@ -12,14 +12,13 @@ connexion.connect((err) => {
   }
 });
 
-const items = [
-  { id: 1, name: 'item1' },
-  { id: 2, name: 'item2' },
-];
-
-app.get('/myroute', (req, res) => {
-  console.log('handling /myroute');
-  res.send(items);
+app.get('/movies', (req, res) => {
+  connexion.promise().query('SELECT * FROM movies')
+    .then((result) => {
+      res.status(200).json(result[0]);
+    }).catch((err)=> {
+      res.send('Error retrieving data from database');
+    })
 });
 
 app.listen(port, () => console.log('server listening on port 5000'));
