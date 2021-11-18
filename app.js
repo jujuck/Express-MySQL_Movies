@@ -66,4 +66,18 @@ app.put("/movies/:id", (req, res) => {
     .catch((err) => {
       res.send("Error updating the movie")
     })
-})
+});
+
+app.delete("/movies/:id", (req, res) => {
+  const movieId = req.params.id;
+
+  connexion.promise().query(
+    'DELETE FROM movies WHERE id = ?',
+    [movieId])
+    .then((result) => {
+      res.send({success: 'Movie deleted successfully', data: result})
+    })
+    .catch((err) => {
+      res.send("Error deleting the movie")
+    })
+});
