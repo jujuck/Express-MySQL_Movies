@@ -11,3 +11,4 @@ The goal of the API is to fetch data from a database on table movies and author 
 - 2/ Connect the data base to the express template (use a db-config, mysql2, dotenv ...) and get the connection in the app.js
 - 3/ Add data in the movies tables with the provides files (./sql/step3.sql)
 - 4/ Add a get route for all the movies
+- 5/ Add a get route for one movies
