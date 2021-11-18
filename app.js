@@ -52,3 +52,18 @@ app.post('/movies', (req, res) => {
 })
 
 app.listen(port, () => console.log('server listening on port 5000'));
+
+app.put("/movies/:id", (req, res) => {
+  const movieId = req.params.id;
+  const moviesData = req.body;
+
+  connexion.promise().query(
+    'UPDATE movies SET ? WHERE id = ?',
+    [moviesData, movieId])
+    .then((result) => {
+      res.send({success: 'Movie updated successfully', data: result})
+    })
+    .catch((err) => {
+      res.send("Error updating the movie")
+    })
+})
