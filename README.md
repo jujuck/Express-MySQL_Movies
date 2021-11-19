@@ -15,3 +15,7 @@ The goal of the API is to fetch data from a database on table movies and author 
 - 6/ Add a post route to add a movies (body params) and get the ID on the send data if successful ({success: 'msg', data: ...Id})
 - 7/ Add an update route with body params
 - 8/ Add a delete route for the movie
+
+Option in order to connect the Front End part
+  If you want to have request from 2 differents origin (URL or PORT)
+  install cors, import it in the main app and add 'app.use(cors())' above app.use(express.json()
