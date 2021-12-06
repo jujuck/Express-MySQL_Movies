@@ -22,8 +22,7 @@ Option in order to connect the Front End part
 - .....
 
 ## Steps Part 2
-- 10/ Adding filter on the get movies by genre, duration, year
-- 11/ Restructuring => replace function with route/Controller/Model as seen in quest
-- 
+- 10/ Restructuring => replace function with route/Controller/Model as seen in quest
+- 11/ Adding filter on the get movies by genre, duration, year
 
 
