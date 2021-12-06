@@ -23,6 +23,7 @@ Option in order to connect the Front End part
 
 ## Steps Part 2
 - 10/ Restructuring => replace function with route/Controller/Model as seen in quest
-- 11/ Adding filter on the get movies by genre, duration, year
+- 11/ Adding fields validation with joi for the post and put routes
+- 12/ Adding filter on the get movies by genre, duration, year
 
 
