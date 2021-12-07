@@ -6,7 +6,7 @@ npm i && npm start
 ## Goal
 The goal of the API is to fetch data from a database on table movies and author (CRUD)
 
-## Steps Part 1
+## Steps Part 1 (Simple route)
 - 1/ Create a database videotifly and add a table movies with id (int auto incr primary key not null), title (varchar 250,not null), synopsis (longtext), year (int), genre (varchar 100), duration (int)
 - 2/ Connect the data base to the express template (use a db-config, mysql2, dotenv ...) and get the connection in the app.js
 - 3/ Add data in the movies tables with the provides files (./sql/step3.sql)
@@ -21,9 +21,13 @@ Option in order to connect the Front End part
   install cors, import it in the main app and add 'app.use(cors())' above app.use(express.json()
 - .....
 
-## Steps Part 2
+## Steps Part 2 (Structure, filter and validation)
 - 10/ Restructuring => replace function with route/Controller/Model as seen in quest
 - 11/ Adding fields validation with joi for the post and put routes
 - 12/ Adding filter on the get movies by genre, duration, year
+- .... (Front Part 2)
+
+## Steps Part 3 (Middleware, user && auth)
+- 13/ Create a user table....
 
 
