@@ -15,8 +15,30 @@ const checkMoviesFields = (data, create = false) => {
   }).validate(data, { abortEarly: false }).error;
 }
 
-const findMany = () => {
-  return db.query('SELECT * FROM movies')
+const findMany = (query) => {
+  let sqlQuery = 'SELECT * FROM movies';
+  const sqlValue = [];
+  let transitionWord = " WHERE"
+
+  if (query.genre) {
+    sqlQuery += `${transitionWord} genre = ?`
+    sqlValue.push(query.genre);
+    transitionWord = "AND"
+  }
+
+  if (query.max_duration) {
+    sqlQuery += `${transitionWord} duration >= ?`
+    sqlValue.push(query.max_duration);
+    transitionWord = " AND"
+  }
+
+  if (query.min_year) {
+    sqlQuery += `${transitionWord} year >= ?`
+    sqlValue.push(query.min_year);
+    transitionWord = " AND"
+  }
+
+  return db.query(sqlQuery, sqlValue)
     .then((result) => result[0]);
 };
 
