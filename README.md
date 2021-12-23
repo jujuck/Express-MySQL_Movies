@@ -34,6 +34,6 @@ Following the workshop (https://docs.google.com/presentation/d/1_uuWY9bWG7y6OGIF
 - 15/ Add an auth route to get credentail from sign in. This route get the hashedpassword and uuid from the email and then verify it. (Try to use middleware to clean your code)
 - 16/ Add the method to calculate a JsonWebToken from the email and uuid and return it as cookie with secure parameters and a sjon for the user (firstname, lastname, email)
 
-<img scr="./images/auth_secure_cookies.png" >
+<img src="./images/auth_secure_cookies.png" >
 
 
