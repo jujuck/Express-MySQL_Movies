@@ -6,7 +6,7 @@ const saltRounds = 10;
 const hashedPassword = (req, res, next) => {
   bcrypt.hash(req.body.password, saltRounds)
     .then((hash) => {
-      console.log(hash)
+      delete req.body.password;
       req.body = { ...req.body, hashedpassword: hash };
       next();
     })
@@ -15,13 +15,13 @@ const hashedPassword = (req, res, next) => {
     });
 }
 
-const addUuid = (req, res, next) => {
-  const uuid = uuidv4();
-  req.body = { ...req.body, uuid };
+const createUuid = (req, res, next) => {
+  const uuidusers = uuidv4();
+  req.body = { ...req.body, uuidusers };
   next();
 }
 
 module.exports = {
   hashedPassword,
-  addUuid
+  createUuid
 }
