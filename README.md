@@ -32,7 +32,7 @@ Following the workshop (https://docs.google.com/presentation/d/1_uuWY9bWG7y6OGIF
 - 13/ Create a user table with firstname, lastname, email and hashedpassword, and uuid
 - 14/ Create the route to create the user (POST), add the method to hash the password (Bcrypt) (https://medium.com/@mridu.sh92/a-quick-guide-for-authentication-using-bcrypt-on-express-nodejs-1d8791bb418f) and the module to calculate the iuud. On this route, you should check first if the email already exist. (You can add a unique key in this fields on the database)
 - 15/ Add an auth route to get credentail from sign in. This route get the hashedpassword and uuid from the email and then verify it. (Try to use middleware to clean your code)
-- 16/ Add the method to calculate a JsonWebToken from the email and uuid and return it as cookie with secure parameters and a sjon for the user (firstname, lastname, email)
+- 16/ Add the method to calculate a JsonWebToken from the email and uuid and return it as cookie with secure parameters and a json for the user (firstname, lastname, email)
 
 <img src="./images/auth_secure_cookies.png" >
 <legend>This block of code will send back a cookies with the JsonWebToken, only accessible via http and not JS, with a life time of 1 day</legend>
