@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
-
+const Users = require('../models/users');
 const saltRounds = 10;
 
 const hashedPassword = (req, res, next) => {
@@ -21,7 +21,27 @@ const createUuid = (req, res, next) => {
   next();
 }
 
+const checkPassword = (req, res, next) => {
+  Users.findOneByEmail(req.body.email)
+    .then(user => {
+      console.log(user)
+      bcrypt.compare(req.body.password, user.hashedpassword)
+        .then(result => {
+          if (result) {
+            req.body = user;
+            delete req.body.hashedpassword;
+            delete req.body.idusers;
+            next()
+          } else {
+            res.status(404).json({ msg: 'Invalid Credentials' })
+          }
+        })
+    })
+    .catch(err => res.status(404).json({ msg: 'Invalid Credentials' }))
+}
+
 module.exports = {
   hashedPassword,
-  createUuid
+  createUuid,
+  checkPassword
 }

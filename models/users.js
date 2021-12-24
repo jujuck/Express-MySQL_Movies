@@ -9,6 +9,12 @@ const createOne = ({ uuidusers, firstname, lastname, email, hashedpassword }) =>
     })
 }
 
+const findOneByEmail = email => {
+  return db.query('SELECT * FROM users WHERE email = ?', email)
+    .then(user => user[0][0])
+}
+
 module.exports = {
-  createOne
+  createOne,
+  findOneByEmail
 }
