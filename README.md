@@ -36,3 +36,5 @@ Following the workshop (https://docs.google.com/presentation/d/1_uuWY9bWG7y6OGIF
 
 <img src="./images/auth_secure_cookies.png" >
 <legend>This block of code will send back a cookies with the JsonWebToken, only accessible via http and not JS, with a life time of 1 day</legend>
+
+- 17/ Check fields for the sign in route with Joi
