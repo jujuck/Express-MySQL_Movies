@@ -3,7 +3,6 @@ const { calculateToken } = require('../helpers/users');
 const { checkPassword } = require('../middleware/users')
 
 authRouter.get('/login', checkPassword, (req, res) => {
-  console.log(req.body)
   res
     .status(201)
     .cookie('user_token', calculateToken(req.body.email, req.body.uuidusers), {

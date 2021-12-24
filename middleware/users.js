@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
+const Joi = require('joi');
 const Users = require('../models/users');
 const saltRounds = 10;
 
@@ -40,8 +41,24 @@ const checkPassword = (req, res, next) => {
     .catch(err => res.status(404).json({ msg: 'Invalid Credentials' }))
 }
 
+const checkUserFields = (req, res, next) => {
+  const error = Joi.object({
+    firstname: Joi.string().max(255).presence('required'),
+    lastname: Joi.string().max(255).presence('required'),
+    email: Joi.string().email().presence('required'),
+    password: Joi.string().pattern(new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")).presence('required'),
+  }).validate(req.body, { abortEarly: false }).error;
+
+  if (error) {
+    res.status(401).json({ msg: 'Fields are not valid' })
+  } else {
+    next();
+  }
+}
+
 module.exports = {
   hashedPassword,
   createUuid,
-  checkPassword
+  checkPassword,
+  checkUserFields
 }
